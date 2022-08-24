@@ -1,10 +1,25 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const { Webpack } = require('@embroider/webpack');
 
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
+    sourcemaps: {
+      enabled: true,
+    },
+    postcssOptions: {
+      compile: {
+        enabled: true,
+        // you need this otherwise we won't recompile on changes in the `app`-tree
+        includePaths: ['app'],
+        cacheInclude: [/.*\.(css|hbs)$/, /.tailwind\.config\.js$/],
+        plugins: [
+          require('tailwindcss')('./tailwind.config.js'),
+          require('autoprefixer'),
+        ],
+      },
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
@@ -20,5 +35,5 @@ module.exports = function (defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  return app.toTree();
+  return require('@embroider/compat').compatBuild(app, Webpack);
 };

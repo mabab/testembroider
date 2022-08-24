@@ -1,0 +1,16 @@
+{{!--<ShoppingCart as |ShoppingCartAPI|>--}}
+{{!--  <ShoppingCartAPI.Container>--}}
+
+{{!--    {{log '--------'}}--}}
+
+{{!--    {{#each this.model as |item|}}--}}
+{{!--      <ShoppingCartAPI.Item @name={{item.name}}/>--}}
+{{!--    {{/each}}--}}
+
+{{!--    {{#each this.model as |item|}}--}}
+{{!--      <ShoppingCartAPI.Item @name={{item.description}}/>--}}
+{{!--    {{/each}}--}}
+{{!--  </ShoppingCartAPI.Container>--}}
+{{!--</ShoppingCart>--}}
+
+<ShoppingCart @items={{this.model}}/>

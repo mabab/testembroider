@@ -1,0 +1,22 @@
+<div class="flex justify-center">
+  <div class="relative">
+    <div class="flex flex-row cursor-pointer py-2">
+      <button class="relative block ml-auto rounded-md bg-white p-2">
+        <div class="absolute text-xs rounded-full -mt-1 -mr-2 px-1 font-bold top-0 right-0 bg-red-700 text-white">3</div>
+        <img class="feather feather-shopping-cart w-6 h-6" src="/images/card.svg">
+      </button>
+    </div>
+
+    <div class="w-full rounded-md overflow-hidden">
+      {{#each @items as |item index|}}
+        <div class="p-2 flex bg-white hover:bg-gray-100 cursor-pointer border-b border-gray-100" style="">
+          <div class="p-2 w-12"><img src="https://picsum.photos/50?random={{index}}"></div>
+          <div class="flex-auto text-sm w-32">
+            <div class="font-bold">{{item.name}}</div>
+            <div class="text-gray-400">{{item.description}}</div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
